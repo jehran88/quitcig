@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101714">
+  <meta name="description" content="QuitCig — track cravings, save money, complete healthy mini tasks, and build smoke-free habits.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>QuitCig — জিতবে তুমি</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0d1210;--panel:#151e19;--panel2:#1c2922;--green:#78f0ad;--green2:#b5ffd1;--muted:#9aafa2;--line:#2b3a31;--white:#f4fff7;--orange:#ffbd75;--red:#ff8e8e}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 85% -10%,#234c35 0,transparent 42%),var(--bg);color:var(--white);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+    button,input{font:inherit}button{cursor:pointer}.app{max-width:780px;margin:0 auto;padding:22px 16px 110px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.brand{display:flex;gap:10px;align-items:center}.logo{width:44px;height:44px;border-radius:15px;background:var(--green);color:#0a1b11;display:grid;place-items:center;font-size:24px;font-weight:900;box-shadow:0 8px 28px #78f0ad25}.brand h1{font-size:22px;margin:0;letter-spacing:-.5px}.brand p{margin:3px 0 0;color:var(--muted);font-size:12px}.pill{border:1px solid var(--line);border-radius:99px;padding:8px 11px;color:var(--green2);font-size:12px;background:#15221a}
+    .hero{border:1px solid #345441;background:linear-gradient(140deg,#1b3426,#132019 65%);border-radius:28px;padding:22px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #78f0ad20;border-radius:50%;right:-70px;top:-70px;box-shadow:0 0 0 25px #78f0ad08,0 0 0 50px #78f0ad05;pointer-events:none}.eyebrow{color:var(--green);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.hero h2{font-size:clamp(25px,6vw,38px);line-height:1.13;letter-spacing:-1px;margin:10px 0}.hero p{color:#c1d4c7;line-height:1.5;font-size:14px;max-width:440px;margin:0 0 18px}.mainbtn{width:100%;border:0;border-radius:17px;background:var(--green);color:#0b1b11;font-weight:900;font-size:18px;padding:17px;box-shadow:0 8px 25px #78f0ad20}.mainbtn:active{transform:scale(.99)}.smallhint{text-align:center;color:#a8c2b0;font-size:11px;margin-top:10px}
+    .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:16px}.stat .icon{font-size:19px}.stat .label{font-size:12px;color:var(--muted);margin-top:9px}.stat .value{font-size:25px;font-weight:850;margin-top:3px;letter-spacing:-.6px}.stat .sub{font-size:11px;color:#8fa597;margin-top:4px}
+    .sectionhead{display:flex;align-items:end;justify-content:space-between;margin:24px 2px 12px}.sectionhead h3{margin:0;font-size:18px}.sectionhead span{font-size:11px;color:var(--muted)}
+    .task{display:flex;gap:13px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:15px}.taskicon{width:49px;height:49px;border-radius:15px;display:grid;place-items:center;background:#24372b;font-size:24px;flex-shrink:0}.taskcopy{flex:1}.taskcopy h4{margin:0 0 5px;font-size:15px}.taskcopy p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}.xp{color:var(--green);font-weight:800;font-size:12px;white-space:nowrap}.taskbtn{border:1px solid #42634d;color:var(--green);background:#1a2a20;border-radius:12px;padding:9px 12px;font-weight:800;font-size:12px;margin-top:10px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card h3{margin:0 0 5px;font-size:16px}.muted{color:var(--muted);font-size:12px;line-height:1.5}.field{display:flex;flex-direction:column;gap:6px;margin-top:12px}.field label{font-size:12px;color:#b4c7ba}.field input{width:100%;border:1px solid #35483b;background:#0e1511;color:var(--white);padding:12px;border-radius:12px;outline:none}.field input:focus{border-color:var(--green)}.savebtn,.secondary{border:1px solid #42634d;border-radius:12px;background:#1c3023;color:var(--green2);font-weight:800;padding:12px;width:100%;margin-top:12px}.secondary{background:transparent;color:#d2e5d7;border-color:var(--line)}
+    .progress{height:8px;border-radius:99px;background:#28362d;overflow:hidden;margin:12px 0 5px}.progress div{height:100%;width:0;background:linear-gradient(90deg,#55d98d,#b5ffd1);border-radius:99px;transition:width .3s}.levelrow{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}.notice{font-size:11px;color:#829889;line-height:1.5;margin-top:18px;text-align:center}.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#e1ffeb;color:#102116;padding:12px 17px;border-radius:14px;font-size:13px;font-weight:800;box-shadow:0 8px 30px #0006;transition:.2s;max-width:90%;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}nav{position:fixed;bottom:0;left:0;right:0;background:#101713ed;backdrop-filter:blur(18px);border-top:1px solid #26372c;padding:10px 18px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;z-index:5}nav button{max-width:220px;flex:1;border:0;border-radius:12px;background:transparent;color:#8fa597;padding:10px;font-size:12px}nav button.active{background:#1d3023;color:var(--green);font-weight:800}.hidden{display:none!important}
+    @media(min-width:600px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:30px}.mainbtn{max-width:390px}.hero p{max-width:470px}.grid2{grid-template-columns:1fr 1fr}}
+    @media(max-width:380px){.app{padding-left:12px;padding-right:12px}.hero{padding:18px}.stat{padding:13px}.stat .value{font-size:22px}.grid2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><div class="logo">Q</div><div><h1>QuitCig</h1><p>Small wins. A healthier you.</p></div></div>
+    <div class="pill" id="onlineBadge">● Ready</div>
+  </header>
+  <section class="hero" id="home">
+    <div class="eyebrow">YOUR COMEBACK STARTS NOW</div>
+    <h2>ইচ্ছেটাকে হারাও.<br><span style="color:var(--green)">নিজেকে জিতাও.</span></h2>
+    <p>Craving আসতেই সিগারেট নয়—একটা ছোট healthy task বেছে নাও। প্রতিবার চেষ্টা করাও progress.</p>
+    <button class="mainbtn" id="cravingBtn">🚭 খাই নাই · I resisted</button>
+    <div class="smallhint">Craving এলে চাপো • তারপর ছোট্ট একটা task করো</div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><div class="icon">🌱</div><div class="label">আজকের resisted cravings</div><div class="value" id="resisted">0</div><div class="sub">তোমার লগ অনুযায়ী</div></div>
+    <div class="stat"><div class="icon">⭐</div><div class="label">Total XP</div><div class="value" id="xp">0</div><div class="sub" id="levelText">Level 1 · Starter</div></div>
+    <div class="stat"><div class="icon">💸</div><div class="label">আনুমানিক সেভিংস</div><div class="value" id="saved">৳0</div><div class="sub">তোমার সেটিংস অনুযায়ী</div></div>
+    <div class="stat"><div class="icon">🚬</div><div class="label">আজ খাওয়ার লগ</div><div class="value" id="smoked">0</div><div class="sub">সিগারেট</div></div>
+  </div>
+
+  <div class="sectionhead"><h3>🎯 Your next mini-task</h3><span id="taskCount">Pick one</span></div>
+  <div class="task">
+    <div class="taskicon" id="taskIcon">💧</div>
+    <div class="taskcopy"><h4 id="taskTitle">এক গ্লাস পানি পান করো</h4><p id="taskDesc">ধীরে পানি পান করো, তারপর ১ মিনিট অপেক্ষা করো।</p><button class="taskbtn" id="completeTask">✓ Task complete</button></div>
+    <div class="xp" id="taskXP">+10 XP</div>
+  </div>
+
+  <div class="sectionhead"><h3>📈 তোমার progress</h3><span>One day at a time</span></div>
+  <section class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><h3 id="levelName">Level 1 · Starter</h3><div class="muted" id="levelSub">প্রতিটি ছোট চেষ্টা গুরুত্বপূর্ণ।</div></div><div style="font-size:28px">🏆</div></div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div class="levelrow"><span id="xpProgress">0 / 100 XP</span><span id="nextLevel">Next: Level 2</span></div>
+  </section>
+
+  <div class="sectionhead"><h3>⚙️ Cigarette & savings setup</h3><span>Saved on this device</span></div>
+  <div class="grid2">
+    <section class="card">
+      <h3>তোমার সিগারেটের হিসাব</h3><div class="muted">প্যাকেটের দাম, কয়টা থাকে, দিনে সাধারণত কয়টা খাও।</div>
+      <div class="field"><label for="packPrice">প্যাকেটের দাম (৳)</label><input id="packPrice" type="number" min="0" step="1" placeholder="যেমন 150"></div>
+      <div class="field"><label for="packCount">এক প্যাকেটে কয়টা</label><input id="packCount" type="number" min="1" step="1" placeholder="যেমন 20"></div>
+      <div class="field"><label for="dailyCount">আগে দিনে কয়টা খেতে</label><input id="dailyCount" type="number" min="0" step="1" placeholder="যেমন 10"></div>
+      <button class="savebtn" id="saveSettings">Save my settings</button>
+    </section>
+    <section class="card">
+      <h3>Quick check-in</h3><div class="muted">আজ সিগারেট খেয়ে ফেললে, নিজেকে দোষ না দিয়ে সৎভাবে log করো। আবার শুরু করা যায়।</div>
+      <button class="secondary" id="smokedBtn">+ Log a cigarette</button>
+      <button class="secondary" id="resetDayBtn">New day / reset daily count</button>
+      <div class="muted" style="margin-top:12px">সেভিংস হলো আনুমানিক হিসাব; তুমি যতটা না খাওয়ার লগ করেছ তার ভিত্তিতে দেখানো হয়।</div>
+    </section>
+  </div>
+
+  <div class="sectionhead"><h3>🧠 Craving survival tips</h3><span>Try this now</span></div>
+  <section class="card">
+    <h3>Delay · Breathe · Move</h3>
+    <p class="muted">১) ৫ মিনিট অপেক্ষা করো। ২) আরাম করে ধীরে শ্বাস নাও। ৩) একটু হাঁটো বা পানি পান করো। craving চলে না গেলে আরেকটি সহজ task বেছে নাও।</p>
+    <p class="muted">নিকোটিন ছাড়ার সময় অস্বস্তি হতে পারে। খুব কঠিন লাগলে স্বাস্থ্যকর্মী বা চিকিৎসকের সাহায্য নাও—একা লড়তে হবে না।</p>
+  </section>
+  <p class="notice">QuitCig is a habit-support tool, not a medical device. Your data stays in this browser on this device. Install it over HTTPS for offline use.</p>
+</div>
+<nav><button class="active" data-scroll="home">⌂ Home</button><button data-scroll="settingsAnchor" id="settingsNav">⚙ Settings</button><button data-scroll="tipsAnchor" id="tipsNav">♡ Tips</button></nav>
+<div class="toast" id="toast"></div>
+<script>
+const tasks=[
+ {icon:"💧",title:"এক গ্লাস পানি পান করো",desc:"ধীরে পানি পান করো, তারপর ১ মিনিট অপেক্ষা করো।",xp:10},
+ {icon:"🌬️",title:"১ মিনিট calm breathing",desc:"আরাম করে শ্বাস নাও, ধীরে ছাড়ো। মাথা ঘুরলে থেমে স্বাভাবিকভাবে শ্বাস নাও।",xp:15},
+ {icon:"🚶",title:"২ মিনিট হাঁটো",desc:"ঘরের ভেতর বা নিরাপদ জায়গায় একটু হাঁটো।",xp:15},
+ {icon:"🧍",title:"হালকা stretch",desc:"কাঁধ আর হাত আরাম করে stretch করো; ব্যথা হলে থামো।",xp:10},
+ {icon:"🧠",title:"Craving-কে নাম দাও",desc:"নিজেকে বলো: “এটা একটা ইচ্ছা—আদেশ নয়। এটা কেটে যেতে পারে।”",xp:10},
+ {icon:"🎵",title:"একটা গান শোনো",desc:"প্রিয় গানের একটা অংশ শোনো বা অন্য কাজে মন দাও।",xp:10},
+ {icon:"🧹",title:"১ মিনিটের mini mission",desc:"টেবিল গুছাও বা ছোট কোনো নিরাপদ কাজ করো।",xp:15},
+ {icon:"📩",title:"কাউকে মেসেজ দাও",desc:"বিশ্বাসের কাউকে বলো, “আজ craving সামলানোর চেষ্টা করছি।”",xp:20},
+ {icon:"🦵",title:"৮টি chair squat (optional)",desc:"চেয়ার ধরে ধীরে করো; ব্যথা, মাথা ঘোরা বা অস্বস্তি হলে বাদ দাও।",xp:15}
+];
+const defaults={packPrice:150,packCount:20,dailyCount:10,xp:0,resisted:0,smoked:0,dayKey:new Date().toLocaleDateString("en-CA"),savedResist:0,taskIndex:0,completed:[],history:{}};
+let state;
+try{state={...defaults,...JSON.parse(localStorage.getItem("quitcig-data")||"{}")}}catch(e){state={...defaults}}
+function today(){return new Date().toLocaleDateString("en-CA")}
+function save(){localStorage.setItem("quitcig-data",JSON.stringify(state));render()}
+function ensureDay(){const d=today();if(state.dayKey!==d){state.dayKey=d;state.resisted=0;state.smoked=0;state.savedResist=0;state.completed=[];save()}}
+function level(){return Math.floor(state.xp/100)+1}
+function levelName(n){return ["","Starter","Fighter","Stronger","Unstoppable","Legend"][Math.min(n,5)]||"Legend"}
+function money(n){return "৳"+Math.max(0,Math.round(n)).toLocaleString("en-US")}
+function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2200)}
+function pickTask(){let available=tasks.map((_,i)=>i).filter(i=>i!==state.taskIndex);state.taskIndex=available[Math.floor(Math.random()*available.length)]??0;renderTask()}
+function renderTask(){const t=tasks[state.taskIndex]||tasks[0];document.getElementById("taskIcon").textContent=t.icon;document.getElementById("taskTitle").textContent=t.title;document.getElementById("taskDesc").textContent=t.desc;document.getElementById("taskXP").textContent="+"+t.xp+" XP";document.getElementById("taskCount").textContent=state.completed.includes(state.taskIndex)?"Completed today":"Mini mission"}
+function render(){
+ document.getElementById("resisted").textContent=state.resisted;
+ document.getElementById("xp").textContent=state.xp;
+ document.getElementById("smoked").textContent=state.smoked;
+ const cost=(Number(state.packPrice)||0)/(Math.max(1,Number(state.packCount)||1));
+ document.getElementById("saved").textContent=money(cost*Math.min(state.savedResist,Number(state.dailyCount)||0));
+ const lv=level(),name="Level "+lv+" · "+levelName(lv);
+ document.getElementById("levelText").textContent=name;document.getElementById("levelName").textContent=name;
+ const progress=state.xp%100;document.getElementById("progressBar").style.width=progress+"%";
+ document.getElementById("xpProgress").textContent=progress+" / 100 XP";document.getElementById("nextLevel").textContent="Next: Level "+(lv+1);
+ ["packPrice","packCount","dailyCount"].forEach(id=>{const el=document.getElementById(id);if(document.activeElement!==el)el.value=state[id]??""});
+ renderTask();
+}
+document.getElementById("cravingBtn").addEventListener("click",()=>{ensureDay();state.resisted++;state.savedResist=Math.min(state.savedResist+1,Number(state.dailyCount)||0);pickTask();save();toast("তুমি চেষ্টা করেছ—এটাই progress! 💚")});
+document.getElementById("completeTask").addEventListener("click",()=>{const idx=state.taskIndex;if(state.completed.includes(idx)){toast("এই task আজ complete করা হয়েছে ✓");return}state.completed.push(idx);state.xp+=tasks[idx].xp;save();toast("Task complete! +"+tasks[idx].xp+" XP ✨");pickTask();save()});
+document.getElementById("saveSettings").addEventListener("click",()=>{state.packPrice=Math.max(0,Number(document.getElementById("packPrice").value)||0);state.packCount=Math.max(1,Number(document.getElementById("packCount").value)||20);state.dailyCount=Math.max(0,Number(document.getElementById("dailyCount").value)||0);save();toast("Settings saved on this device ✓")});
+document.getElementById("smokedBtn").addEventListener("click",()=>{ensureDay();state.smoked++;save();toast("Logged honestly. No shame—keep going 💚")});
+document.getElementById("resetDayBtn").addEventListener("click",()=>{if(confirm("আজকের resisted, smoked ও daily task count reset করবেন? XP থাকবে।")){state.dayKey=today();state.resisted=0;state.smoked=0;state.savedResist=0;state.completed=[];save();toast("Daily counts reset") }});
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");if(b.dataset.scroll==="home")window.scrollTo({top:0,behavior:"smooth"});else if(b.id==="settingsNav")document.getElementById("packPrice").scrollIntoView({behavior:"smooth",block:"center"});else document.querySelector(".sectionhead:last-of-type").scrollIntoView({behavior:"smooth",block:"center"})}));
+function online(){const el=document.getElementById("onlineBadge");el.textContent=navigator.onLine?"● Online":"● Offline-ready";el.style.color=navigator.onLine?"var(--green)":"var(--orange)"}window.addEventListener("online",online);window.addEventListener("offline",online);
+ensureDay();render();online();
+if("serviceWorker" in navigator && location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+</script>
+</body>
+</html>

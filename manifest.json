@@ -1,0 +1,13 @@
+{
+  "name": "QuitCig — Smoke-free habits",
+  "short_name": "QuitCig",
+  "description": "A gamified habit-support app for tracking cravings, tasks and estimated savings.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d1210",
+  "theme_color": "#101714",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
