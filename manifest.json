@@ -1,0 +1,11 @@
+{
+  "name": "QuitCig — জিতবে তুমি",
+  "short_name": "QuitCig",
+  "description": "Craving support, real-life stories and smoke-free habit tracking.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0d1210",
+  "theme_color": "#101714",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
